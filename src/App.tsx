@@ -1,11 +1,12 @@
 import './App.css'
-import { UserCard } from './modules/easy/UserCard'
+import { User } from './modules/easy/ObjectoConAnidamiento/User'
 
 function App() {
 
   return (
     <>
-      <UserCard />
+      {/* <UserCard /> */}
+      <User />
     </>
   )
 }

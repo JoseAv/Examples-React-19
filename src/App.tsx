@@ -1,12 +1,14 @@
 import './App.css'
-import { User } from './modules/easy/ObjectoConAnidamiento/User'
+import { Comments } from './modules/avanzado/estructurarDatos/Comments'
+import { commentData } from './modules/avanzado/estructurarDatos/types'
 
 function App() {
 
   return (
     <>
       {/* <UserCard /> */}
-      <User />
+      {/* <User /> */}
+      <Comments replies={commentData} />
     </>
   )
 }

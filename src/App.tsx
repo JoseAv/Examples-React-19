@@ -1,6 +1,6 @@
 import './App.css'
-import { TreeView } from './modules/avanzado/TreeView/TreeView'
-import { folderStructure } from './modules/avanzado/TreeView/types'
+import { DynamicForm } from './modules/medios/DynamicFor/DynamicForm'
+import { formConfig } from './modules/medios/DynamicFor/types'
 function App() {
 
   return (
@@ -9,7 +9,8 @@ function App() {
       {/* <User /> */}
       {/* <Comments replies={commentData} /> */}
       {/* <Card data={user} /> */}
-      <TreeView tree={folderStructure} />
+      {/* <TreeView tree={folderStructure} /> */}
+      <DynamicForm form={formConfig} />
     </>
   )
 }

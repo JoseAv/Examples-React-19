@@ -5,6 +5,16 @@ export interface Interfaceusers {
     status: typeStatus
 }
 
+export interface filter {
+    role: typeRol
+    status: typeStatus
+}
+
+export const Filter = {
+    Role: 'role',
+    Status: 'status'
+} as const
+
 export const Roles = {
     Admin: 'admin',
     User: 'user',
@@ -16,9 +26,11 @@ export const Status = {
     Inactive: 'inactive'
 } as const
 
+
 export type typeStatus = typeof Status[keyof typeof Status]
 
 export type typeRol = typeof Roles[keyof typeof Roles]
+export type typeFilters = typeof Filter[keyof typeof Filter]
 
 export type RecordUsers = Record<string, Interfaceusers>
 

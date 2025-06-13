@@ -1,44 +1,50 @@
-import { useState } from "react";
-import type { RecordUsers, typeRol, typeStatus } from "./Filtrar";
+
+import { useEffect, useState } from "react";
+import { type RecordUsers, type typeRol, type typeStatus } from "./Filtrar";
 
 export const useFilterUser = ({ users }: { users: RecordUsers }) => {
-    const [stateUser, setState] = useState(users)
-    const [role, setRol] = useState<typeRol | null>(null)
-    const [status, setStatus] = useState<typeStatus | null>(null)
-    const [stateOriginal] = useState(users)
+    const [stateUser, setUser] = useState(users)
+    const [OriginalUsers] = useState(users)
+    const [filters, setFilter] = useState<{
+        role?: typeRol;
+        status?: typeStatus;
+    }>({})
 
-    const FilterRol = ({ newRole }: { newRole: typeRol | null }): RecordUsers => {
-        setRol(newRole)
-        if (newRole === null) return stateOriginal
-        const newRolVisible = Object.entries(FilterStatus({ newStatus: status })).reduce((acc, [key, value]) => {
-            return value.role === newRole ? { ...acc, [key]: value } : acc
+    const ChangeUSer = () => {
+        if (!Object.keys(filters).length) {
+            return OriginalUsers
+        }
+        const newObjeto = Object.entries(OriginalUsers).reduce((acc, [key, value]) => {
+            const isStatus = !filters.status || value.status === filters.status // Devuelve el primer true
+            const isRol = !filters.role || value.role === filters.role
+            if (isStatus && isRol) {
+                return { ...acc, [key]: value }
+            }
+            return acc
         }, {})
-        return newRolVisible
+        console.log(newObjeto)
+
+        return newObjeto
     }
 
-    const FilterStatus = ({ newStatus }: { newStatus: typeStatus | null }): RecordUsers => {
-        setStatus(newStatus)
-        if (newStatus === null) return stateOriginal
-        const newRolVisible = Object.entries(FilterRol({ newRole: role })).reduce((acc, [key, value]) => {
-            return value.status === newStatus ? { ...acc, [key]: value } : acc
-        }, {})
-        return newRolVisible
+    const ChangeFilters = (type: 'role' | 'status', value: typeRol | typeStatus) => {
+        setFilter((prev) => {
+            return {
+                ...prev,
+                [type]: value
+            }
+        })
     }
 
-    const newFilterRol = ({ newRole }: { newRole: typeRol | null }) => {
-        setState(FilterRol({ newRole }))
+    const ResetFilter = () => {
+        setFilter({})
     }
 
-    const newFilterStatus = ({ newStatus }: { newStatus: typeStatus | null }) => {
-        setState(FilterStatus({ newStatus }))
-    }
+    useEffect(() => {
+        setUser(ChangeUSer())
+    }, [filters])
 
-    const ResetUSer = () => {
-        setState(stateOriginal)
-        setRol(null)
-        setStatus(null)
-    }
 
-    return { stateUser, ResetUSer, FilterRol: newFilterRol, FilterStatus: newFilterStatus }
+    return { stateUser, setUser, filters, ChangeFilters, setFilter, ChangeUSer, ResetFilter }
 
 } 

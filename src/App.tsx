@@ -1,6 +1,6 @@
 import './App.css'
-import { DynamicForm } from './modules/medios/DynamicFor/DynamicForm'
-import { formConfig } from './modules/medios/DynamicFor/types'
+import { users } from './modules/medios/Filtrar Usuarios/Filtrar'
+import { FiltrarUsuarios } from './modules/medios/Filtrar Usuarios/FiltrarUsuarios'
 function App() {
 
   return (
@@ -10,7 +10,10 @@ function App() {
       {/* <Comments replies={commentData} /> */}
       {/* <Card data={user} /> */}
       {/* <TreeView tree={folderStructure} /> */}
-      <DynamicForm form={formConfig} />
+      {/* <DynamicForm form={formConfig} /> */}
+      {/* <ExtraerUser users={users} /> */}
+      {/* <FilterProductos products={products} /> */}
+      <FiltrarUsuarios users={users} />
     </>
   )
 }

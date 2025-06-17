@@ -5,7 +5,7 @@
 import type { TypesComment } from "./types"
 
 
-export const Comments = ({ replies }: { replies: TypesComment }) => {
+export const CommentsNoUsado = ({ replies }: { replies: TypesComment }) => {
 
     return (
         <div>
@@ -36,7 +36,7 @@ export const Comments = ({ replies }: { replies: TypesComment }) => {
 
                 if (key === 'replies') {
                     return value.map((ele: TypesComment, index: number) => (
-                        <Comments key={index} replies={ele} />
+                        <CommentsNoUsado key={index} replies={ele} />
                     ))
                 }
             })}

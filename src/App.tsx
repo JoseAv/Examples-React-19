@@ -1,6 +1,6 @@
 import './App.css'
-import { cart } from './modules/medios/Carrtito/car'
-import { Car } from './modules/medios/Carrtito/Cart'
+import { Comments } from './modules/avanzado/comments/components/comments'
+import { comments, type TypeComments } from './modules/avanzado/comments/types/commentsTypes'
 function App() {
 
   return (
@@ -14,7 +14,8 @@ function App() {
       {/* <ExtraerUser users={users} /> */}
       {/* <FilterProductos products={products} /> */}
       {/* <FiltrarUsuarios users={users} /> */}
-      <Car ObjectCar={cart} />
+      {/* <Car ObjectCar={cart} /> */}
+      <Comments comments={comments as TypeComments} />
     </>
   )
 }

@@ -4,7 +4,7 @@ import { Replies } from "./replies";
 
 export const Comments = ({ comments }: { comments: TypeComments }) => {
 
-    const [AllComments] = useState<TypeComments>(comments)
+    const [AllComments, setComments] = useState<TypeComments>(comments)
     if (!comments) return <h1>No hay comentarios</h1>
     if (!AllComments) return <h1>Cargando</h1>
 
@@ -12,17 +12,47 @@ export const Comments = ({ comments }: { comments: TypeComments }) => {
         e.preventDefault()
         const { respuesta } = e.target as HTMLFormElement
         const newComments = { [crypto.randomUUID()]: { text: respuesta.value, replies: {} } }
-        console.log(FindInsertComment(AllComments, newComments, KeyComment))
+        setComments(FindInsertComment(AllComments, newComments, KeyComment))
     }
 
-    const FindInsertComment = (arr: TypeComments, respuesta: TypeComments, KeyComment: string) => {
-        if (Object.entries(arr).length <= 0) return arr
-        let newResponse = {}
-        for (const [key, value] of Object.entries(arr)) {
-            newResponse = key === KeyComment ? { text: value.text, replies: { ...respuesta, ...FindInsertComment({ ...value.replies }, respuesta, KeyComment) } } : { [key]: { text: value.text, replies: { ...FindInsertComment({ ...value.replies }, respuesta, KeyComment) } } }
-        }
-        return newResponse
-    }
+    // const FindInsertComment = (commmentsClone: TypeComments, respuesta: TypeComments, KeyComment: string) => {
+    //     if (Object.entries(commmentsClone).length <= 0) return commmentsClone
+
+    //     for (const [key, value] of Object.entries(commmentsClone)) {
+    //         if (key === KeyComment) {
+    //             value.replies = { ...value.replies, ...respuesta }
+    //             return commmentsClone
+    //         }
+    //         FindInsertComment(value.replies, respuesta, KeyComment)
+    //     }
+    //     return commmentsClone
+    // }
+
+    const FindInsertComment = (
+        commmentsClone: TypeComments,
+        respuesta: TypeComments,
+        KeyComment: string
+    ): TypeComments => {
+        // Versión más funcional (sin mutaciones):
+        return Object.entries(commmentsClone).reduce((acc, [key, value]) => {
+            if (key === KeyComment) {
+                return {
+                    ...acc,
+                    [key]: {
+                        ...value,
+                        replies: { ...value.replies, ...respuesta }
+                    }
+                };
+            }
+            return {
+                ...acc,
+                [key]: {
+                    ...value,
+                    replies: FindInsertComment(value.replies, respuesta, KeyComment)
+                }
+            };
+        }, {} as TypeComments);
+    };
 
 
 
@@ -35,7 +65,7 @@ export const Comments = ({ comments }: { comments: TypeComments }) => {
                     <div style={{ height: '100%', border: '1px solid white' }}>
                         <div>
                             <h5>Respondio a {key}</h5>
-                            <Replies replies={value.replies} />
+                            <Replies replies={value.replies} handleForm={handleForm} />
                         </div>
                     </div>
                     <form onSubmit={(e) => handleForm(e, key)}>

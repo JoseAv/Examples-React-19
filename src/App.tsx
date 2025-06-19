@@ -1,6 +1,6 @@
 import './App.css'
-import { Comments } from './modules/avanzado/comments/components/comments'
-import { comments, type TypeComments } from './modules/avanzado/comments/types/commentsTypes'
+import { Profile } from './modules/avanzado/perfil/Profile'
+import { profile } from './modules/avanzado/perfil/types'
 function App() {
 
   return (
@@ -15,7 +15,8 @@ function App() {
       {/* <FilterProductos products={products} /> */}
       {/* <FiltrarUsuarios users={users} /> */}
       {/* <Car ObjectCar={cart} /> */}
-      <Comments comments={comments as TypeComments} />
+      {/* <Comments comments={comments as TypeComments} /> */}
+      <Profile profile={profile} />
     </>
   )
 }

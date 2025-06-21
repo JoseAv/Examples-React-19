@@ -1,6 +1,5 @@
 import './App.css'
-import { Profile } from './modules/avanzado/perfil/Profile'
-import { profile } from './modules/avanzado/perfil/types'
+import { Count } from './practices/Reducer/Contador/Count.'
 function App() {
 
   return (
@@ -16,7 +15,8 @@ function App() {
       {/* <FiltrarUsuarios users={users} /> */}
       {/* <Car ObjectCar={cart} /> */}
       {/* <Comments comments={comments as TypeComments} /> */}
-      <Profile profile={profile} />
+      {/* <Profile profile={profile} /> */}
+      <Count />
     </>
   )
 }

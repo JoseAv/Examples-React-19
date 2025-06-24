@@ -1,5 +1,5 @@
 import './App.css'
-import { Count } from './practices/Reducer/Contador/Count.'
+import { ListTask } from './practices/Reducer/Task/Task'
 function App() {
 
   return (
@@ -16,7 +16,9 @@ function App() {
       {/* <Car ObjectCar={cart} /> */}
       {/* <Comments comments={comments as TypeComments} /> */}
       {/* <Profile profile={profile} /> */}
-      <Count />
+      {/* <Count /> */}
+      <ListTask />
+
     </>
   )
 }

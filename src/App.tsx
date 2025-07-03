@@ -1,5 +1,5 @@
 import './App.css'
-import { ListTask } from './practices/Reducer/Task/Task'
+import { Persistent } from './training/one-week/Persistent'
 function App() {
 
   return (
@@ -17,7 +17,8 @@ function App() {
       {/* <Comments comments={comments as TypeComments} /> */}
       {/* <Profile profile={profile} /> */}
       {/* <Count /> */}
-      <ListTask />
+      {/* <ListTask /> */}
+      <Persistent />
 
     </>
   )

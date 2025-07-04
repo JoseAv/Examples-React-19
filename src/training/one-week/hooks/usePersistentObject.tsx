@@ -2,29 +2,41 @@ import { useState } from "react"
 import type { ObjectUser } from "../data/inicialObject"
 import type { User } from "../interfaces/data"
 
-export const usePersistentObject = ({ initialUser }: { initialUser: ObjectUser }) => {
-    const [ManageUser, SetManageUser] = useState<null | ObjectUser>(() => {
+export const usePersistentObject = <T extends ObjectUser>({
+    initialValue,
+    storageKey = 'user'
+}: {
+    initialValue: T,
+    storageKey?: string
+}) => {
+    const [state, setState] = useState<T>(() => {
         try {
-            const stringObject = window.localStorage.getItem('user')
-            if (!stringObject) return initialUser
-            return JSON.parse(stringObject)
+            const storedValue = window.localStorage.getItem(storageKey)
+            return storedValue ? JSON.parse(storedValue) : initialValue
         } catch (error) {
-            console.log(error)
-            return initialUser
+            console.error("Error reading from localStorage:", error)
+            return initialValue
         }
-
     })
 
-    const AddUser = ({ user }: { user: User }) => {
+    const addItem = (item: User) => {
+        const newState = {
+            ...state,
+            [crypto.randomUUID()]: item
+        } as T
 
-        const Users = { ...ManageUser, [crypto.randomUUID()]: user }
-        SetManageUser(Users)
-        RefreshUser('user', Users)
+        setState(newState)
+
+        try {
+            window.localStorage.setItem(storageKey, JSON.stringify(newState))
+        } catch (error) {
+            console.error("Error writing to localStorage:", error)
+        }
     }
 
-    const RefreshUser = (key: string, Users: ObjectUser) => {
-        window.localStorage.setItem(key, JSON.stringify(Users))
+    return {
+        addItem,
+        state,
+        setState
     }
-
-    return { AddUser, ManageUser }
 }

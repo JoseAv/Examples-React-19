@@ -3,9 +3,9 @@ import { initialUser } from "./data/inicialObject"
 import { usePersistentObject } from "./hooks/usePersistentObject"
 
 export const Persistent = () => {
-    const { ManageUser, AddUser } = usePersistentObject({ initialUser })
+    const { addItem, state } = usePersistentObject({ initialValue: initialUser })
 
-    if (!ManageUser || !Object.keys(ManageUser).length) return <h1>Cargando</h1>
+    if (!state || !Object.keys(state).length) return <h1>Cargando</h1>
 
     const handleForm = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -21,7 +21,7 @@ export const Persistent = () => {
             lastLogin: new Date(),
             permissions: [permissions.toString()]
         };
-        AddUser({ user: NewUser });
+        addItem(NewUser);
         form.reset();
     };
 
@@ -30,7 +30,7 @@ export const Persistent = () => {
         <div>
             <h1>Prueba</h1>
             <div>
-                {Object.entries(ManageUser).map(([field, values]) => {
+                {Object.entries(state).map(([field, values]) => {
                     return <div key={field} >
                         <h2>ID: {field}</h2>
                         <h4>Nombre:{values.profile.name}</h4>

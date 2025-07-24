@@ -1,5 +1,5 @@
 import './App.css'
-import { Persistent } from './training/one-week/Persistent'
+import { Index } from './modules/css/Menu/pages/Index'
 function App() {
 
   return (
@@ -18,7 +18,8 @@ function App() {
       {/* <Profile profile={profile} /> */}
       {/* <Count /> */}
       {/* <ListTask /> */}
-      <Persistent />
+      {/* <Persistent /> */}
+      <Index />
 
     </>
   )

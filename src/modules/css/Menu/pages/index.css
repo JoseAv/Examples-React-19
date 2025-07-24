@@ -1,0 +1,53 @@
+.main-container {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    overflow: hidden;
+    grid-template-areas:
+        "header header header header header"
+        "main main main main main"
+        "footer footer footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+}
+
+header {
+    background-color: rgba(255, 0, 0, 0.486);
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+    background-color: rgba(0, 255, 255, 0.178);
+}
+
+
+section {
+    background-color: whitesmoke;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    position: absolute;
+    width: 200px;
+    min-height: 100vh;
+    top: 0;
+    right: 0;
+    /* Cambiado de left a right y posición inicial fuera de la pantalla */
+    z-index: 1000;
+    /* Para asegurar que esté por encima de otros elementos */
+}
+
+footer {
+    background-color: green;
+    grid-area: footer;
+}
+
+
+.show {
+    transform: translateX(100%);
+
+}
+
+.noShow {
+    transform: translateX(0);
+
+}

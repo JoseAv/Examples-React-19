@@ -1,7 +1,13 @@
 import './slider.css'
 
 import { Content } from "./Content";
-const elements = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// tenemos que calcular para saber cuando elementos tenemos que colcoar
+
+
+
+// aqui se duplico bastates veces porque al ser pocos elementos 
+// puede verse la parte vacia si no se llena el espacio necesario
+const elements = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
 
@@ -13,6 +19,8 @@ export const Slider = () => (
                     <Content ele={ele} />
                 )
             })}
+
+
         </div>
 
     </div>

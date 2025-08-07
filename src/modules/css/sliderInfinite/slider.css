@@ -5,13 +5,14 @@
     flex-direction: column;
     flex-wrap: wrap;
     background-color: rgba(183, 116, 255, 0.1);
-    width: 20%;
+    width: 250px;
     height: 300px;
     padding: 10px;
     gap: 10px;
     box-shadow: 0px 4px 20px 0 rgba(183, 116, 255, 0.3);
     flex-shrink: 0;
     overflow: hidden;
+    border-radius: 8px;
 }
 
 .card h2 {
@@ -32,6 +33,8 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -39,13 +42,12 @@
 .container-carrouserl {
     overflow: hidden;
     display: flex;
-    gap: 100px;
+    gap: 30px;
     position: absolute;
     top: 50%;
     left: 0;
-
+    animation: carousel 8s linear infinite;
     border: 1px solid white;
-    animation: carousel 20s linear infinite;
 }
 
 @keyframes carousel {
@@ -53,6 +55,18 @@
         transform: translateX(0);
     }
 
+
+    /* por que -50?
+        esto se hace ya que el contedor que tiene a las cartas para hacer esta animacion
+        llega hasta la mitad de los elmentos,por eso al inicio lo duplicamos,
+        es decir va a volver a llegar al 1 pero duplicado y cuando este se encuntre
+        alineado a la izquierda es donde va a empezar la otra animacion
+        y esta empieza justamente en donde dejamos que esta termine es decir el 1 duplicado
+        o la mitad, si pega un salto es porque el navedor no hace bien el calculo
+        esto se puede arreglar con js y indicar perfectamente en que pixel esta
+        pero es mas dificil ya que si se hace mas peque;o o mas grande hay que volver
+        a recalcular el espacio
+    */
     100% {
         transform: translateX(-50%);
     }

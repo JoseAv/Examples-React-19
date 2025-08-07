@@ -1,5 +1,5 @@
 import './App.css'
-import { Index } from './modules/css/Menu/pages/Index'
+import { Slider } from './modules/css/slider/Slider'
 function App() {
 
   return (
@@ -19,7 +19,8 @@ function App() {
       {/* <Count /> */}
       {/* <ListTask /> */}
       {/* <Persistent /> */}
-      <Index />
+      {/* <Index /> */}
+      <Slider />
 
     </>
   )

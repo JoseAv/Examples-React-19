@@ -17,9 +17,5 @@ export const Index = () => {
                 <footer>hola</footer>
             </div>
         </>
-
-
     )
-
-
 }

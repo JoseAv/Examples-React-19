@@ -1,0 +1,50 @@
+/* Contedor */
+.main-container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    flex-direction: column;
+}
+
+.container-cart {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    padding: 10px;
+    border: 6px solid white;
+    overflow: hidden;
+}
+
+.container-cart>* {
+    flex: 1 1 250px;
+    min-width: 250px;
+}
+
+
+/* CART */
+.cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 280px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 1px solid palevioletred;
+    padding: 20px;
+    gap: 20px;
+}
+
+
+.cart h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: lightpink;
+}
+
+.cart p {
+    font-size: 1.6rem;
+    text-wrap: pretty;
+}

@@ -1,5 +1,5 @@
 import './App.css'
-import { Slider } from './modules/css/slider/Slider'
+import { SliderNormal } from './modules/css/sliderNormal/SliderNormal'
 function App() {
 
   return (
@@ -20,7 +20,8 @@ function App() {
       {/* <ListTask /> */}
       {/* <Persistent /> */}
       {/* <Index /> */}
-      <Slider />
+      {/* <Slider /> */}
+      <SliderNormal />
 
     </>
   )

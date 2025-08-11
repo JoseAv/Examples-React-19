@@ -11,26 +11,28 @@
 
 .container-cart {
     display: flex;
-    width: 100%;
     gap: 20px;
-    padding: 10px;
-    border: 6px solid white;
-    overflow: hidden;
+    transition: transform 1s ease;
 }
 
 .container-cart>* {
     flex-shrink: 1;
-    flex-basis: 250px;
-    min-width: 250px;
+    flex-basis: 178px;
+    min-width: 178px;
+    border: 1px solid white;
 }
 
+.container-principal-cart {
+    overflow: hidden;
+    width: 100%;
+}
 
 /* CART */
 .cart {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 280px;
+    height: 300px;
     width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
@@ -40,12 +42,12 @@
 
 
 .cart h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     color: lightpink;
 }
 
 .cart p {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     text-wrap: pretty;
 }
